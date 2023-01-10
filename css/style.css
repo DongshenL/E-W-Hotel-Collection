@@ -203,7 +203,7 @@ a.more {
 .btn {
   font-weight: 600;
   padding: 12px 30px;
-  border-radius: 30px;
+  border-radius: 5px;
   color: #ffffff;
   background: #2f2f2f;
   border-color: #2f2f2f;
@@ -231,6 +231,11 @@ a.more {
   color: #2f2f2f;
   background: #f9bf29;
   border-color: #f9bf29;
+}
+.btn.btn-gray {
+  color: #bcbcbc;
+  background: #fffafa;
+  border-color: #bcbcbc;
 }
 .btn.btn-secondary:hover {
   background: #f8b810;
@@ -894,4 +899,14 @@ textarea {
 
 .py-7 {
   padding: 7rem 0 !important;
+}
+
+.btn-xs {
+    padding: .25rem .5rem;
+    font-size: 1rem;
+    border-radius: .1rem
+}
+
+.tw-justify-between {
+  justify-content: space-between;
 }
