@@ -119,57 +119,17 @@
                 sizes: [
                   {
                     id: 1,
-                    name: "Single",
-                    blend: "60/40 cotton",
-                    specification: "39x80x12",
-                    price: "$156/dozen",
+                    name: "Queen",
+                    blend: "80/20 cotton",
+                    specification: "96x120",
+                    price: "$294/dozen",
                   },
                   {
                     id: 2,
-                    name: "Double",
-                    blend: "60/40 cotton",
-                    specification: "54x80x15",
-                    price: "$192/dozen",
-                  },
-                  {
-                    id: 3,
-                    name: "Queen",
-                    blend: "60/40 cotton",
-                    specification: "60x80x15",
-                    price: "$216/dozen",
-                  },
-                  {
-                    id: 4,
                     name: "King",
-                    blend: "60/40 cotton",
-                    specification: "78x80x15",
-                    price: "$240/dozen",
-                  },
-                ],
-              },
-              flat: {
-                name: "T220 Flat sheet",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Double",
-                    blend: "60/40 cotton",
-                    specification: "82x115",
-                    price: "$204/dozen",
-                  },
-                  {
-                    id: 2,
-                    name: "Queen",
-                    blend: "60/40 cotton",
-                    specification: "96x115",
-                    price: "$216/dozen",
-                  },
-                  {
-                    id: 3,
-                    name: "King",
-                    blend: "60/40 cotton",
-                    specification: "112x15",
-                    price: "$240/dozen",
+                    blend: "40/20 cotton",
+                    specification: "120x120",
+                    price: "$324/dozen",
                   },
                 ],
               },
@@ -213,14 +173,6 @@
                   @click="selected = 'fitted'"
                 >
                   T220 Fitted sheet
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-xs"
-                  :class="selected == 'flat' ? 'btn-primary' : 'btn-gray'"
-                  @click="selected = 'flat'"
-                >
-                  T220 Flat sheet
                 </button>
               </div>
 
