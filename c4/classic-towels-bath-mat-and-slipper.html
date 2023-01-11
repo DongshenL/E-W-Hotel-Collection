@@ -28,6 +28,8 @@
       referrerpolicy="no-referrer"
     />
     <title>E-W Hotel Collection</title>
+    <!-- Lucas 1 -->
+    <script src="//unpkg.com/alpinejs" defer></script>
   </head>
 
   <body class="single-product">
@@ -106,13 +108,172 @@
           </div>
           <!-- End Image -->
 
+          <!-- Lucas 2 -->
+          <script>
+            const data = {
+              FaceTowel: {
+                name: "Face Towel",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "Face Towel",
+                    blend: "60g",
+                    specification: "13x13",
+                    price: "$1.00/each",
+                  },
+                ],
+              },
+              HandTowel: {
+                name: "Hand Towel",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "Hand Towel",
+                    blend: "160g",
+                    specification: "16x30",
+                    price: "$3.00/each",
+                  },
+                ],
+              },
+              BathTowel: {
+                name: "Bath Towel",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "Bath Towel",
+                    blend: "450g",
+                    specification: "27x54",
+                    price: "$9.00/each",
+                  },
+                ],
+              },
+              
+              Bathmat: {
+                name: "Bath mat",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "Bath mat",
+                    blend: "350g",
+                    specification: "22x32",
+                    price: "$7.00/each",
+                  },
+                ],
+              },
+              Slipper: {
+                name: "Open Toe Slipper",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "Open Toe Slipper",
+                    blend: "",
+                    specification: "XL",
+                    price: "$2.30/each",
+                  },
+                ],
+              },
+              Tablecloth: {
+                name: "Tablecloth",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "Tablecloth",
+                    blend: "",
+                    specification: "Upon request",
+                    price: "$Upon request",
+                  },
+                ],
+              },
+            };
+            function setup() {
+              return {
+                selected: "fitted",
+                selectedSize: "queen",
+                get dataKeys() {
+                  return Object.keys(data).map((key) => ({
+                    key,
+                    name: data[key].name,
+                  }));
+                },
+                get selectedSizes() {
+                  return data[this.selected];
+                },
+                get result() {
+                  return this.selectedSizes.sizes.find(
+                    (i) => i.name.toLowerCase() === this.selectedSize
+                  );
+                },
+                init() {
+                  this.$watch("selected", (value) =>
+                    this.$nextTick(() => {
+                      this.selectedSize =
+                        this.selectedSizes.sizes[0].name.toLowerCase();
+                    })
+                  );
+                },
+              };
+            }
+          </script>
+
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0"x-data="setup">
             <h2 class="mb-4 section-title">
               Classic Towels, Bath mat, Slipper & Tablecloth
             </h2>
             <div class="mb-4">
-              <table class="table table-bordered border border-dark">
+              <!-- Lucas 4 Start -->
+              <div>
+                <div class="mb-4">
+                  <div class="fs-6">Name</div>
+                  <template x-for="item in dataKeys" :key="item.key">
+                    <button
+                      type="button"
+                      class="btn btn-xs me-2"
+                      :class="selected == item.key ? 'btn-primary' : 'btn-gray'"
+                      @click="selected = item.key"
+                      x-html="item.name"
+                    ></button>
+                  </template>
+                </div>
+
+                <div class="mb-4">
+                  <div class="fs-6">Size</div>
+
+                  <template x-for="size in selectedSizes.sizes" :key="size.id">
+                    <button
+                      type="button"
+                      class="btn btn-xs me-2"
+                      :class="selectedSize == size.name.toLowerCase() ? 'btn-primary':'btn-gray'"
+                      @click="selectedSize = size.name.toLowerCase()"
+                      x-text="size.name"
+                    ></button>
+                  </template>
+                </div>
+
+                <div class="mb-4 d-flex">
+                  <div class="d-inline-block">
+                    <div class="fs-6">Weight</div>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-xs me-2"
+                      x-text="result.blend"
+                    ></button>
+                  </div>
+                  <div class="d-inline-block ms-4">
+                    <div class="fs-6">Specification</div>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-xs me-2"
+                      x-text="result.specification"
+                    ></button>
+                  </div>
+                </div>
+                <div class="my-5">
+                  <div x-text="result.price" class="display-6"></div>
+                </div>
+              </div>
+              <!-- Lucas 4 End -->
+              <table class="table table-bordered border border-dark d-none">
                 <thead>
                   <tr>
                     <th>Name</th>

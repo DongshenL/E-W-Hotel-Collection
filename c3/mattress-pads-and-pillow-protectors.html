@@ -28,6 +28,8 @@
       referrerpolicy="no-referrer"
     />
     <title>E-W Hotel Collection</title>
+    <!-- Lucas 1 -->
+    <script src="//unpkg.com/alpinejs" defer></script>
   </head>
 
   <body class="single-product">
@@ -108,13 +110,131 @@
           </div>
           <!-- End Image -->
 
+          <!-- Lucas 2 -->
+          <script>
+            const data = {
+              fitted: {
+                name: "Mattress Pad",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "	Twin",
+                    specification: "39x80",
+                    price: "$20/each",
+                  },
+                  {
+                    id: 2,
+                    name: "Double",
+                    specification: "54x54",
+                    price: "$24/each",
+                  },
+                  {
+                    id: 3,
+                    name: "Queen",
+                    specification: "60x80",
+                    price: "$27/each",
+                  },
+                  {
+                    id: 4,
+                    name: "King",
+                    specification: "78x80",
+                    price: "$32/each",
+                  },
+                ],
+              },
+              flat: {
+                name: "Flap Pillow Protector",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "Queen",
+                    specification: "20x30",
+                    price: "$300/100 Pieces",
+                  },
+                ],
+              },
+            };
+            function setup() {
+              return {
+                selected: "fitted",
+                selectedSize: "queen",
+                get dataKeys() {
+                  return Object.keys(data).map((key) => ({
+                    key,
+                    name: data[key].name,
+                  }));
+                },
+                get selectedSizes() {
+                  return data[this.selected];
+                },
+                get result() {
+                  return this.selectedSizes.sizes.find(
+                    (i) => i.name.toLowerCase() === this.selectedSize
+                  );
+                },
+                init() {
+                  this.$watch("selected", (value) =>
+                    this.$nextTick(() => {
+                      this.selectedSize =
+                        this.selectedSizes.sizes[0].name.toLowerCase();
+                    })
+                  );
+                },
+              };
+            }
+          </script>
+
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0"x-data="setup">
             <h2 class="mb-4 section-title">
               Mattress Pads & Pillow Protectors
             </h2>
             <div class="mb-4">
-              <table class="table table-bordered border border-dark">
+              <!-- Lucas 4 Start -->
+              <div>
+                <div class="mb-4">
+                  <div class="fs-6">Name</div>
+                  <template x-for="item in dataKeys" :key="item.key">
+                    <button
+                      type="button"
+                      class="btn btn-xs me-2"
+                      :class="selected == item.key ? 'btn-primary' : 'btn-gray'"
+                      @click="selected = item.key"
+                      x-html="item.name"
+                    ></button>
+                  </template>
+                </div>
+
+                <div class="mb-4">
+                  <div class="fs-6">Size</div>
+
+                  <template x-for="size in selectedSizes.sizes" :key="size.id">
+                    <button
+                      type="button"
+                      class="btn btn-xs me-2"
+                      :class="selectedSize == size.name.toLowerCase() ? 'btn-primary':'btn-gray'"
+                      @click="selectedSize = size.name.toLowerCase()"
+                      x-text="size.name"
+                    ></button>
+                  </template>
+                </div>
+
+                <div class="mb-4 d-flex">
+                  <div class="d-inline-block ms-4">
+                    <div class="fs-6">Specification</div>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-xs me-2"
+                      x-text="result.specification"
+                    ></button>
+                  </div>
+                </div>
+                <div class="my-5">
+                  <div x-text="result.price" class="display-6"></div>
+                </div>
+              </div>
+              <!-- Lucas 4 End -->
+              <table class="table table-bordered border border-dark d-none">
                 <thead>
                   <tr>
                     <th>Name</th>

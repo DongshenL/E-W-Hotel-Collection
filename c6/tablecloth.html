@@ -28,6 +28,8 @@
       referrerpolicy="no-referrer"
     />
     <title>E-W Hotel Collection</title>
+    <!-- Lucas 1 -->
+    <script src="//unpkg.com/alpinejs" defer></script>
   </head>
 
   <body class="single-product">
@@ -105,12 +107,159 @@
             />
           </div>
           <!-- End Image -->
-
+          <!-- Lucas 2 -->
+          <script>
+            const data = {
+              fitted: {
+                name: "White Tablecloth",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "54x54",
+                    price: "$13.50/each",
+                  },
+                  {
+                    id: 2,
+                    name: "54x120",
+                    price: "$24.50/each",
+                  },
+                  {
+                    id: 3,
+                    name: "72x72",
+                    price: "$26.50/each",
+                  },
+                  {
+                    id: 4,
+                    name: "90x90",
+                    price: "$36.50/each",
+                  },
+                ],
+              },
+              flat: {
+                name: "Black Tablecloth",
+                sizes: [
+                  {
+                    id: 1,
+                    name: "54x54",
+                    price: "$16.00/each",
+                  },
+                  {
+                    id: 2,
+                    name: "54x120",
+                    price: "$33.00/each",
+                  },
+                  {
+                    id: 3,
+                    name: "72x72",
+                    price: "$28.00/each",
+                  },
+                  {
+                    id: 4,
+                    name: "90x90",
+                    price: "$38.00/each",
+                  },
+                ],
+              },
+              Napkin: {
+                name: "22x22 Napkin",
+                sizes: [
+                  {
+                    id: 4,
+                    name: "White",
+                    price: "$1.90/each",
+                  },
+                  {
+                    id: 3,
+                    name: "Black",
+                    price: "$2.10/each",
+                  },
+                ],
+              },
+              otherTablecloth: {
+                name: "Other Tablecloth",
+                sizes: [
+                  {
+                    id: 4,
+                    name: "Other size/color",
+                    price: "upon request",
+                  },
+                ],
+              },
+            };
+            function setup() {
+              return {
+                selected: "fitted",
+                selectedSize: "queen",
+                get dataKeys() {
+                  return Object.keys(data).map((key) => ({
+                    key,
+                    name: data[key].name,
+                  }));
+                },
+                get selectedSizes() {
+                  return data[this.selected];
+                },
+                get result() {
+                  return this.selectedSizes.sizes.find(
+                    (i) => i.name.toLowerCase() === this.selectedSize
+                  );
+                },
+                init() {
+                  this.$watch("selected", (value) =>
+                    this.$nextTick(() => {
+                      this.selectedSize =
+                        this.selectedSizes.sizes[0].name.toLowerCase();
+                    })
+                  );
+                },
+              };
+            }
+          </script>
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0"x-data="setup">
             <h2 class="mb-4 section-title">Luxurious Custom-made Tablecloth</h2>
             <div class="mb-4">
-              <table class="table table-bordered border border-dark">
+              <!-- Lucas 4 Start -->
+              <div>
+                <div class="mb-4">
+                  <div class="fs-6">Name</div>
+                  <template x-for="item in dataKeys" :key="item.key">
+                    <button
+                      type="button"
+                      class="btn btn-xs me-2"
+                      :class="selected == item.key ? 'btn-primary' : 'btn-gray'"
+                      @click="selected = item.key"
+                      x-html="item.name"
+                    ></button>
+                  </template>
+                </div>
+
+                <div class="mb-4">
+                  <div class="fs-6">Size</div>
+
+                  <template x-for="size in selectedSizes.sizes" :key="size.id">
+                    <button
+                      type="button"
+                      class="btn btn-xs me-2"
+                      :class="selectedSize == size.name.toLowerCase() ? 'btn-primary':'btn-gray'"
+                      @click="selectedSize = size.name.toLowerCase()"
+                      x-text="size.name"
+                    ></button>
+                  </template>
+                </div>
+
+                <div class="mb-4 d-flex">
+                  <div class="d-inline-block">
+                  </div>
+                  <div class="d-inline-block ms-4">
+                  </div>
+                </div>
+                <div class="my-5">
+                  <div x-text="result.price" class="display-6"></div>
+                </div>
+              </div>
+              <!-- Lucas 4 End -->
+              <table class="table table-bordered border border-dark d-none">
                 <thead>
                   <tr>
                     <th>Name</th>
