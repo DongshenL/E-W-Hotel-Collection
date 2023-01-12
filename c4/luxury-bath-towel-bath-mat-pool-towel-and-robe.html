@@ -113,121 +113,69 @@
             const data = {
               Face: {
                 name: "Face Towel",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Face Towel",
-                    blend: "60g",
-                    specification: "13x13",
-                    price: "$1.25/each",
-                  },
-                ],
+
+                weight: "60g",
+                specification: "13x13",
+                price: "$1.25/each",
               },
               HandTowel: {
                 name: "Hand Towel",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Hand Towel",
-                    blend: "160g",
-                    specification: "16x30",
-                    price: "$3.30/each",
-                  },
-                ],
+                weight: "160g",
+                specification: "16x30",
+                price: "$3.30/each",
               },
               LuxuryBath: {
                 name: "Luxury Bath Towel",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Luxury Bath Towel",
-                    blend: "650g",
-                    specification: "82x115",
-                    price: "$204/dozen",
-                  },
-                ],
+
+                weight: "650g",
+                specification: "32x58",
+                price: "$13.00/each",
               },
               Bath: {
                 name: "Bath mat",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Bath mat",
-                    blend: "450g",
-                    specification: "22x32",
-                    price: "$12.00/each",
-                  },
-                ],
+
+                weight: "450g",
+                specification: "22x32",
+                price: "$12.00/each",
               },
               LuxuryPoolTowel: {
                 name: "Luxury Pool Towel",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Luxury Pool Towel",
-                    blend: "600g",
-                    specification: "27x54",
-                    price: "$14.00/each",
-                  },
-                ],
+
+                weight: "600g",
+                specification: "27x54",
+                price: "$14.00/each",
               },
               Robe: {
                 name: "Robe",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Robe",
-                    blend: "",
-                    specification: "XL",
-                    price: "$60.00/each",
-                  },
-                ],
+                weight: "With belt",
+                specification: "XL",
+                price: "$60.00/each",
               },
               LuxuryCustomRobe: {
                 name: "Luxury Custom Robe",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Luxury Custom Robe",
-                    blend: "",
-                    specification: "96x115",
-                    price: "upon request",
-                  },
-                ],
+                weight: "Hotel logo available",
+                specification: "XL",
+                price: "upon request",
               },
             };
             function setup() {
               return {
                 selected: "Face",
-                selectedSize: "queen",
                 get dataKeys() {
                   return Object.keys(data).map((key) => ({
                     key,
                     name: data[key].name,
                   }));
                 },
-                get selectedSizes() {
-                  return data[this.selected];
-                },
                 get result() {
-                  return this.selectedSizes.sizes.find(
-                    (i) => i.name.toLowerCase() === this.selectedSize
-                  );
-                },
-                init() {
-                  this.$watch("selected", (value) =>
-                    this.$nextTick(() => {
-                      this.selectedSize =
-                        this.selectedSizes.sizes[0].name.toLowerCase();
-                    })
-                  );
+                  return data[this.selected];
                 },
               };
             }
           </script>
 
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0"x-data="setup">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
             <h2 class="mb-4 section-title">
               Luxury Bath Towel, Bath mat, Pool Towel &Robe
             </h2>
@@ -239,24 +187,10 @@
                   <template x-for="item in dataKeys" :key="item.key">
                     <button
                       type="button"
-                      class="btn btn-xs me-2"
+                      class="btn btn-xs me-2 mb-2"
                       :class="selected == item.key ? 'btn-primary' : 'btn-gray'"
                       @click="selected = item.key"
                       x-html="item.name"
-                    ></button>
-                  </template>
-                </div>
-
-                <div class="mb-4">
-                  <div class="fs-6">Size</div>
-
-                  <template x-for="size in selectedSizes.sizes" :key="size.id">
-                    <button
-                      type="button"
-                      class="btn btn-xs me-2"
-                      :class="selectedSize == size.name.toLowerCase() ? 'btn-primary':'btn-gray'"
-                      @click="selectedSize = size.name.toLowerCase()"
-                      x-text="size.name"
                     ></button>
                   </template>
                 </div>
@@ -267,7 +201,7 @@
                     <button
                       type="button"
                       class="btn btn-primary btn-xs me-2"
-                      x-text="result.blend"
+                      x-text="result.weight"
                     ></button>
                   </div>
                   <div class="d-inline-block ms-4">
@@ -283,73 +217,6 @@
                   <div x-text="result.price" class="display-6"></div>
                 </div>
               </div>
-              <!-- Lucas 4 End -->
-              <table class="table table-bordered border border-dark d-none">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Weight</th>
-                    <th>Specification</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td rowspan="1" class="align-middle text-center">
-                      Face Towel
-                    </td>
-                    <td>60g</td>
-                    <td>13x13</td>
-                    <td>$1.25/each</td>
-                  </tr>
-                  <tr>
-                    <td rowspan="1" class="align-middle text-center">
-                      Hand Towel
-                    </td>
-                    <td>160g</td>
-                    <td>16x30</td>
-                    <td>$3.30/each</td>
-                  </tr>
-                  <tr>
-                    <td rowspan="1" class="align-middle text-center">
-                      Luxury Bath Towel
-                    </td>
-                    <td>650g</td>
-                    <td>32x58</td>
-                    <td>$13.00/each</td>
-                  </tr>
-                  <tr>
-                    <td rowspan="1" class="align-middle text-center">
-                      Bath mat
-                    </td>
-                    <td>450g</td>
-                    <td>22x32</td>
-                    <td>$12.00/each</td>
-                  </tr>
-                  <tr>
-                    <td rowspan="1" class="align-middle text-center">
-                      Luxury Pool Towel
-                    </td>
-                    <td>600g</td>
-                    <td>27x54</td>
-                    <td>$14.00/each</td>
-                  </tr>
-                  <tr>
-                    <td rowspan="1" class="align-middle text-center">Robe</td>
-                    <td></td>
-                    <td>XL</td>
-                    <td>$60.00/each</td>
-                  </tr>
-                  <tr>
-                    <td rowspan="1" class="align-middle text-center">
-                      Luxury Custom Robe
-                    </td>
-                    <td></td>
-                    <td>96x115</td>
-                    <td>upon request</td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
             <p><a href="#" class="btn">Contact for big purchase</a></p>
           </div>

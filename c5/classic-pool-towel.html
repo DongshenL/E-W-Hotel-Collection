@@ -111,67 +111,43 @@
           <!-- Lucas 2 -->
           <script>
             const data = {
-              fitted: {
-                name: "Pool Towel",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "250g",
-                    specification: "23x44",
-                    price: "$3.50/each",
-                  },
-                  {
-                    id: 2,
-                    name: "450g",
-                    specification: "27x54",
-                    price: "$9.00/each",
-                  },
-                ],
+              pool250: {
+                name: "Pool Towel (250g)",
+
+                specification: "23x44",
+                price: "$3.50/each",
               },
-              flat: {
-                name: "XL Pool Towel",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "650g",
-                    specification: "32x70",
-                    price: "$13.00/each",
-                  },
-                ],
+              pool450: {
+                name: "Pool Towel (450g)",
+
+                specification: "27x54",
+                price: "$9.00/each",
+              },
+              xlpool: {
+                name: "XL Pool Towel (650g)",
+
+                specification: "32x70",
+                price: "$13.00/each",
               },
             };
             function setup() {
               return {
-                selected: "fitted",
-                selectedSize: "queen",
+                selected: "pool250",
                 get dataKeys() {
                   return Object.keys(data).map((key) => ({
                     key,
                     name: data[key].name,
                   }));
                 },
-                get selectedSizes() {
-                  return data[this.selected];
-                },
                 get result() {
-                  return this.selectedSizes.sizes.find(
-                    (i) => i.name.toLowerCase() === this.selectedSize
-                  );
-                },
-                init() {
-                  this.$watch("selected", (value) =>
-                    this.$nextTick(() => {
-                      this.selectedSize =
-                        this.selectedSizes.sizes[0].name.toLowerCase();
-                    })
-                  );
+                  return data[this.selected];
                 },
               };
             }
           </script>
 
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0"x-data="setup">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
             <h2 class="mb-4 section-title">Classic Pool Towel</h2>
             <div class="mb-4">
               <!-- Lucas 4 Start -->
@@ -189,30 +165,8 @@
                   </template>
                 </div>
 
-                <div class="mb-4">
-                  <div class="fs-6">Size</div>
-
-                  <template x-for="size in selectedSizes.sizes" :key="size.id">
-                    <button
-                      type="button"
-                      class="btn btn-xs me-2"
-                      :class="selectedSize == size.name.toLowerCase() ? 'btn-primary':'btn-gray'"
-                      @click="selectedSize = size.name.toLowerCase()"
-                      x-text="size.name"
-                    ></button>
-                  </template>
-                </div>
-
                 <div class="mb-4 d-flex">
                   <div class="d-inline-block">
-                    <div class="fs-6">Blend</div>
-                    <button
-                      type="button"
-                      class="btn btn-primary btn-xs me-2"
-                      x-text="result.blend"
-                    ></button>
-                  </div>
-                  <div class="d-inline-block ms-4">
                     <div class="fs-6">Specification</div>
                     <button
                       type="button"
