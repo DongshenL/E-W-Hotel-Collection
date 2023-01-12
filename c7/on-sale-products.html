@@ -110,7 +110,7 @@
           <!-- Lucas 2 -->
           <script>
             const data = {
-              fitted: {
+              flat: {
                 name: "T250 Flat sheet",
                 sizes: [
                   {
@@ -122,12 +122,12 @@
                   },
                 ],
               },
-              flat: {
-                name: "T220 Flat sheet",
+              pillowcase: {
+                name: "T250 Pillowcase",
                 sizes: [
                   {
                     id: 1,
-                    name: "Double",
+                    name: "Queen",
                     blend: "50% cotton",
                     specification: "20x40",
                     price: "$350/100 pieces",
@@ -137,7 +137,7 @@
             };
             function setup() {
               return {
-                selected: "fitted",
+                selected: "pillowcase",
                 selectedSize: "queen",
                 get dataKeys() {
                   return Object.keys(data).map((key) => ({
@@ -166,7 +166,7 @@
           </script>
 
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0"x-data="setup">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
             <h2 class="mb-4 section-title">On Sale Products</h2>
             <div class="mb-4">
               <!-- Lucas 4 Start -->

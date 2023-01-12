@@ -110,105 +110,106 @@
           <!-- Lucas 2 -->
           <script>
             const data = {
-              fitted: {
-                name: "White Tablecloth",
-                sizes: [
+              tablecloth: {
+                name: "Tablecloth",
+                colors: [
                   {
                     id: 1,
-                    name: "54x54",
+                    name: "White",
+                    specification: "54x54",
                     price: "$13.50/each",
                   },
                   {
                     id: 2,
-                    name: "54x120",
+                    name: "White",
+                    specification: "54x120",
                     price: "$24.50/each",
                   },
                   {
                     id: 3,
-                    name: "72x72",
+                    name: "White",
+                    specification: "72x72",
                     price: "$26.50/each",
                   },
                   {
                     id: 4,
-                    name: "90x90",
+                    name: "White",
+                    specification: "90x90",
                     price: "$36.50/each",
                   },
-                ],
-              },
-              flat: {
-                name: "Black Tablecloth",
-                sizes: [
                   {
-                    id: 1,
-                    name: "54x54",
+                    id: 5,
+                    name: "Black",
+                    specification: "54x54",
                     price: "$16.00/each",
                   },
                   {
-                    id: 2,
-                    name: "54x120",
+                    id: 6,
+                    name: "Black",
+                    specification: "54x120",
                     price: "$33.00/each",
                   },
                   {
-                    id: 3,
-                    name: "72x72",
+                    id: 7,
+                    name: "Black",
+                    specification: "72x72",
                     price: "$28.00/each",
                   },
                   {
-                    id: 4,
-                    name: "90x90",
+                    id: 8,
+                    name: "Black",
+                    specification: "90x90",
                     price: "$38.00/each",
+                  },
+                  {
+                    id: 9,
+                    name: "Upon request",
+                    specification: "Othersize",
+                    price: "Upon request",
                   },
                 ],
               },
               Napkin: {
-                name: "22x22 Napkin",
-                sizes: [
+                name: "Napkin",
+                colors: [
                   {
-                    id: 4,
+                    id: 1,
                     name: "White",
+                    specification: "22x22",
                     price: "$1.90/each",
                   },
                   {
-                    id: 3,
+                    id: 2,
                     name: "Black",
+                    specification: "22x22",
                     price: "$2.10/each",
-                  },
-                ],
-              },
-              otherTablecloth: {
-                name: "Other Tablecloth",
-                sizes: [
-                  {
-                    id: 4,
-                    name: "Other size/color",
-                    price: "upon request",
                   },
                 ],
               },
             };
             function setup() {
               return {
-                selected: "fitted",
-                selectedSize: "queen",
+                selected: "tablecloth",
+                selectedColor: "white",
                 get dataKeys() {
                   return Object.keys(data).map((key) => ({
                     key,
                     name: data[key].name,
                   }));
                 },
-                get selectedSizes() {
+                get selectedColors() {
                   return data[this.selected];
                 },
                 get result() {
-                  return this.selectedSizes.sizes.find(
-                    (i) => i.name.toLowerCase() === this.selectedSize
+                  return this.selectedColors.colors.find(
+                    (i) => i.name.toLowerCase() === this.selectedColor
                   );
                 },
                 init() {
                   this.$watch("selected", (value) =>
                     this.$nextTick(() => {
-                      this.selectedSize =
-                        this.selectedSizes.sizes[0].name.toLowerCase();
+                      this.selectedColor =
+                        this.selectedColors.colors[0].name.toLowerCase();
                     })
                   );
                 },
@@ -216,50 +217,11 @@
             }
           </script>
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0"x-data="setup">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
             <h2 class="mb-4 section-title">Luxurious Custom-made Tablecloth</h2>
-            <div class="mb-4">
-              <!-- Lucas 4 Start -->
-              <div>
-                <div class="mb-4">
-                  <div class="fs-6">Name</div>
-                  <template x-for="item in dataKeys" :key="item.key">
-                    <button
-                      type="button"
-                      class="btn btn-xs me-2"
-                      :class="selected == item.key ? 'btn-primary' : 'btn-gray'"
-                      @click="selected = item.key"
-                      x-html="item.name"
-                    ></button>
-                  </template>
-                </div>
 
-                <div class="mb-4">
-                  <div class="fs-6">Size</div>
-
-                  <template x-for="size in selectedSizes.sizes" :key="size.id">
-                    <button
-                      type="button"
-                      class="btn btn-xs me-2"
-                      :class="selectedSize == size.name.toLowerCase() ? 'btn-primary':'btn-gray'"
-                      @click="selectedSize = size.name.toLowerCase()"
-                      x-text="size.name"
-                    ></button>
-                  </template>
-                </div>
-
-                <div class="mb-4 d-flex">
-                  <div class="d-inline-block">
-                  </div>
-                  <div class="d-inline-block ms-4">
-                  </div>
-                </div>
-                <div class="my-5">
-                  <div x-text="result.price" class="display-6"></div>
-                </div>
-              </div>
               <!-- Lucas 4 End -->
-              <table class="table table-bordered border border-dark d-none">
+              <table class="table table-bordered border border-dark">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -305,7 +267,7 @@
                   <tr>
                     <td>Black</td>
                     <td>72x72</td>
-                    <td>$$28.00/each</td>
+                    <td>$28.00/each</td>
                   </tr>
                   <tr>
                     <td>Black</td>
