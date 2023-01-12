@@ -115,7 +115,7 @@
           <script>
             const data = {
               fitted: {
-                name: "T220 Fitted sheet",
+                name: "T250 Flat sheet",
                 sizes: [
                   {
                     id: 1,
@@ -126,8 +126,8 @@
                   },
                   {
                     id: 2,
-                    name: "King",
-                    blend: "40/20 cotton",
+                    name: "King XL",
+                    blend: "80/20 cotton",
                     specification: "120x120",
                     price: "$324/dozen",
                   },
@@ -140,6 +140,12 @@
                 selectedSize: "queen",
                 get selectedSizes() {
                   return data[this.selected];
+                },
+                get dataKeys() {
+                  return Object.keys(data).map((key) => ({
+                    key,
+                    name: data[key].name,
+                  }));
                 },
                 get result() {
                   return this.selectedSizes.sizes.find(
@@ -166,14 +172,15 @@
             <div class="mb-4">
               <div class="mb-4">
                 <div class="fs-6">Name</div>
-                <button
-                  type="button"
-                  class="btn btn-xs"
-                  :class="selected == 'fitted' ? 'btn-primary' : 'btn-gray'"
-                  @click="selected = 'fitted'"
-                >
-                  T220 Fitted sheet
-                </button>
+                <template x-for="item in dataKeys" :key="item.key">
+                  <button
+                    type="button"
+                    class="btn btn-xs me-2"
+                    :class="selected == item.key ? 'btn-primary' : 'btn-gray'"
+                    @click="selected = item.key"
+                    x-html="item.name"
+                  ></button>
+                </template>
               </div>
 
               <div class="mb-4">
