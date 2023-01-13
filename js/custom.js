@@ -28,8 +28,7 @@
       quantity = document.getElementsByClassName("quantity-container");
 
     function createBindings(quantityContainer) {
-      var quantityAmount =
-        quantityContainer.getElementsByClassName("quantity-amount")[0];
+      var quantityAmount = quantityContainer.getElementsByClassName("quantity-amount")[0];
       var increase = quantityContainer.getElementsByClassName("increase")[0];
       var decrease = quantityContainer.getElementsByClassName("decrease")[0];
       increase.addEventListener("click", function (e) {

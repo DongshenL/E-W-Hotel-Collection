@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="author" content="e-w hotel collection" />
     <link rel="shortcut icon" href="favicon.png" />
 
@@ -14,10 +11,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <link href="/css/tiny-slider.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" />
     <link
@@ -34,10 +28,7 @@
 
   <body class="single-product">
     <!-- Start Header/Navigation -->
-    <nav
-      class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
-      arial-label="Ew navigation bar"
-    >
+    <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Ew navigation bar">
       <div class="container">
         <a class="navbar-brand" href="/">E-W Hotel Collection<span>.</span></a>
 
@@ -58,8 +49,26 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="active">
-              <a class="nav-link" href="/products.html">Products</a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="/products.html"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/c1.html">Sheets and Pillowcases</a></li>
+                <li><a class="dropdown-item" href="/c2.html">Duvet Comforters & Pillows</a></li>
+                <li><a class="dropdown-item" href="/c3.html">Mattress Pads & Pillow Protectors</a></li>
+                <li><a class="dropdown-item" href="/c4.html">Towels, Bath mat, Bath Robe & Slipper</a></li>
+                <li><a class="dropdown-item" href="/c5.html">Classic Pool Towel</a></li>
+                <li><a class="dropdown-item" href="/c6.html">Tablecloth</a></li>
+                <li><a class="dropdown-item" href="/c7.html">On Sale Products</a></li>
+              </ul>
             </li>
             <li><a class="nav-link" href="/about.html">About us</a></li>
 
@@ -78,16 +87,12 @@
             <div class="intro-excerpt">
               <h1>Luxury T300 1cm strip</h1>
               <p class="mb-4">
-                Natural, breathable, sensually soft and high thread count linens
-                for environmentally and socially responsible hotels, guest
-                houses and lodging. Classic 1cm wide woven stripe. There are
-                coloured thread on the bottom hem of linens promotes to easy
-                identification.
+                Natural, breathable, sensually soft and high thread count linens for environmentally and socially
+                responsible hotels, guest houses and lodging. Classic 1cm wide woven stripe. There are coloured thread
+                on the bottom hem of linens promotes to easy identification.
               </p>
               <p>
-                <a href="/products.html" class="btn btn-secondary me-2"
-                  >All Products</a
-                >
+                <a href="/products.html" class="btn btn-secondary me-2">All Products</a>
               </p>
             </div>
           </div>
@@ -104,89 +109,108 @@
     <!-- Start Product Section -->
     <div class="product-section py-7">
       <div class="container">
-        <div class="row">
-          <!-- Start Image -->
-          <div class="col-12 col-md-6 mb-5 mb-md-0">
-            <img
-              src="/images/c1/1CM STRIP 2.jpg"
-              class="img-fluid product-thumbnail"
-            />
-          </div>
-          <!-- End Image -->
-          <!-- Lucas 2 -->
-          <script>
-            const data = {
-              flat: {
-                name: "T300 Flat sheet",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Queen XL",
-                    blend: "100% Cotton",
-                    specification: "98x120",
-                    price: "$336/dozen",
-                  },
-                  {
-                    id: 3,
-                    name: "Queen",
-                    blend: "100% Cotton",
-                    specification: "108x120",
-                    price: "$372/dozen",
-                  },
-                  {
-                    id: 4,
-                    name: "King",
-                    blend: "100% Cotton",
-                    specification: "54x80x15",
-                    price: "$192/dozen",
-                  },
-                ],
+        <!-- Lucas 2 -->
+        <script>
+          const data = {
+            flat: {
+              name: "T300 Flat sheet",
+              images: [
+                "/img/c1/5/flat/Flat sheet 1.jpg",
+                "/img/c1/5/flat/Flat sheet 2.jpg",
+                "/img/c1/5/flat/Flat sheet 3.jpg",
+              ],
+              sizes: [
+                {
+                  id: 1,
+                  name: "Queen XL",
+                  blend: "100% Cotton",
+                  specification: "98x120",
+                  price: "$336/dozen",
+                },
+                {
+                  id: 3,
+                  name: "Queen",
+                  blend: "100% Cotton",
+                  specification: "108x120",
+                  price: "$372/dozen",
+                },
+                {
+                  id: 4,
+                  name: "King",
+                  blend: "100% Cotton",
+                  specification: "54x80x15",
+                  price: "$192/dozen",
+                },
+              ],
+            },
+            pillowcase: {
+              name: "T300 Pillowcase",
+              images: ["/img/c1/5/pillowcase/1cm strip pillowcase/1CM STRIP 2.jpg"],
+              sizes: [
+                {
+                  id: 1,
+                  name: "Queen",
+                  blend: "100% Cotton",
+                  specification: "20x40",
+                  price: "$600/100 pieces",
+                },
+              ],
+            },
+          };
+          function setup() {
+            return {
+              selected: "flat",
+              selectedSize: "queen",
+              activeImg: "/img/c1/1/fitted/FITTED SHEET.jpg",
+              get images() {
+                return data[this.selected].images;
               },
-              pillowcase: {
-                name: "T300 Pillowcase",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Queen",
-                    blend: "100% Cotton",
-                    specification: "20x40",
-                    price: "$600/100 pieces",
-                  },
-                ],
+              get dataKeys() {
+                return Object.keys(data).map((key) => ({
+                  key,
+                  name: data[key].name,
+                }));
+              },
+              get selectedSizes() {
+                return data[this.selected];
+              },
+              get result() {
+                return this.selectedSizes.sizes.find((i) => i.name.toLowerCase() === this.selectedSize);
+              },
+              init() {
+                this.$watch("selected", (value) =>
+                  this.$nextTick(() => {
+                    this.selectedSize = this.selectedSizes.sizes[0].name.toLowerCase();
+                    this.activeImg = this.images[0];
+                  })
+                );
               },
             };
-            function setup() {
-              return {
-                selected: "flat",
-                selectedSize: "queen",
-                get dataKeys() {
-                  return Object.keys(data).map( key => ({key, name: data[key].name}))
-                },
-                get selectedSizes() {
-                  return data[this.selected];
-                },
-                get result() {
-                  return this.selectedSizes.sizes.find(
-                    (i) => i.name.toLowerCase() === this.selectedSize
-                  );
-                },
-                init() {
-                  this.$watch("selected", (value) =>
-                    this.$nextTick(() => {
-                      this.selectedSize =
-                        this.selectedSizes.sizes[0].name.toLowerCase();
-                    })
-                  );
-                },
-              };
-            }
-          </script>
+          }
+        </script>
+        <div class="row" x-data="setup">
+          <!-- Start Image -->
+          <div class="col-12 col-md-6 mb-5 mb-md-0">
+            <div class="ratio ratio-4x3">
+              <img :src="activeImg" class="product-thumbnail border" />
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+              <template x-for="img in images" :key="img">
+                <img
+                  @click="activeImg = img"
+                  :src="img"
+                  class="border pe-pointer mx-2"
+                  :class="activeImg == img ? 'border-active' : ''"
+                  style="width: 8rem"
+                />
+              </template>
+            </div>
+          </div>
+          <!-- End Image -->
 
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
-            <h2 class="mb-4 section-title">
-              T-300 Mercerized 1 cm Stripe Sheets and Pillowcase
-            </h2>
+          <div class="col-12 col-md-6 mb-5 mb-lg-0">
+            <h2 class="mb-4 section-title">T-300 Mercerized 1 cm Stripe Sheets and Pillowcase</h2>
             <div class="mb-4">
               <!-- Lucas 4 Start -->
               <div>
@@ -220,19 +244,11 @@
                 <div class="mb-4 d-flex">
                   <div class="d-inline-block">
                     <div class="fs-6">Blend</div>
-                    <button
-                      type="button"
-                      class="btn btn-primary btn-xs me-2"
-                      x-text="result.blend"
-                    ></button>
+                    <button type="button" class="btn btn-primary btn-xs me-2" x-text="result.blend"></button>
                   </div>
                   <div class="d-inline-block ms-4">
                     <div class="fs-6">Specification</div>
-                    <button
-                      type="button"
-                      class="btn btn-primary btn-xs me-2"
-                      x-text="result.specification"
-                    ></button>
+                    <button type="button" class="btn btn-primary btn-xs me-2" x-text="result.specification"></button>
                   </div>
                 </div>
                 <div class="my-5">
@@ -240,7 +256,7 @@
                 </div>
               </div>
               <!-- Lucas 4 End -->
-              <table class="table table-bordered border border-dark">
+              <table class="table table-bordered border border-dark d-none">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -252,9 +268,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td rowspan="3" class="align-middle text-center">
-                      T300 Flat sheet
-                    </td>
+                    <td rowspan="3" class="align-middle text-center">T300 Flat sheet</td>
                     <td>Queen XL</td>
                     <td>100% Cotton</td>
                     <td>98x120</td>
@@ -273,9 +287,7 @@
                     <td>$372/dozen</td>
                   </tr>
                   <tr>
-                    <td rowspan="4" class="align-middle text-center">
-                      T300 Pillowcase
-                    </td>
+                    <td rowspan="4" class="align-middle text-center">T300 Pillowcase</td>
                     <td>Queen</td>
                     <td>100% Cotton</td>
                     <td>20x40</td>

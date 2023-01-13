@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="author" content="e-w hotel collection" />
     <link rel="shortcut icon" href="favicon.png" />
 
@@ -14,10 +11,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <link href="/css/tiny-slider.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" />
     <link
@@ -34,10 +28,7 @@
 
   <body class="single-product">
     <!-- Start Header/Navigation -->
-    <nav
-      class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
-      arial-label="Ew navigation bar"
-    >
+    <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Ew navigation bar">
       <div class="container">
         <a class="navbar-brand" href="/">E-W Hotel Collection<span>.</span></a>
 
@@ -58,8 +49,26 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="active">
-              <a class="nav-link" href="/products.html">Products</a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="/products.html"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/c1.html">Sheets and Pillowcases</a></li>
+                <li><a class="dropdown-item" href="/c2.html">Duvet Comforters & Pillows</a></li>
+                <li><a class="dropdown-item" href="/c3.html">Mattress Pads & Pillow Protectors</a></li>
+                <li><a class="dropdown-item" href="/c4.html">Towels, Bath mat, Bath Robe & Slipper</a></li>
+                <li><a class="dropdown-item" href="/c5.html">Classic Pool Towel</a></li>
+                <li><a class="dropdown-item" href="/c6.html">Tablecloth</a></li>
+                <li><a class="dropdown-item" href="/c7.html">On Sale Products</a></li>
+              </ul>
             </li>
             <li><a class="nav-link" href="/about.html">About us</a></li>
 
@@ -78,14 +87,11 @@
             <div class="intro-excerpt">
               <h1>Wrinkle Sheets</h1>
               <p class="mb-4">
-                A blend of polyester and cotton assures lasting performance and
-                softness. 2" Top and Bottom Hem. There are coloured thread on
-                the bottom hem of linens promotes to easy identification.
+                A blend of polyester and cotton assures lasting performance and softness. 2" Top and Bottom Hem. There
+                are coloured thread on the bottom hem of linens promotes to easy identification.
               </p>
               <p>
-                <a href="/products.html" class="btn btn-secondary me-2"
-                  >All Products</a
-                >
+                <a href="/products.html" class="btn btn-secondary me-2">All Products</a>
               </p>
             </div>
           </div>
@@ -102,71 +108,83 @@
     <!-- Start Product Section -->
     <div class="product-section py-7">
       <div class="container">
-        <div class="row">
+        <!-- Lucas 2 -->
+        <script>
+          const data = {
+            fitted: {
+              name: "Wrinkle Top Sheet",
+              images: ["/img/c1/6/top sheet.jpg"],
+              sizes: [
+                {
+                  id: 1,
+                  name: "Queen",
+                  blend: "90/10 Cotton",
+                  specification: "96x110",
+                  price: "$396/dozen",
+                },
+                {
+                  id: 2,
+                  name: "King",
+                  blend: "90/10 Cotton",
+                  specification: "114x110",
+                  price: "$444/dozen",
+                },
+              ],
+            },
+          };
+          function setup() {
+            return {
+              selected: "fitted",
+              selectedSize: "queen",
+              activeImg: "/img/c1/6/top sheet.jpg",
+              get images() {
+                return data[this.selected].images;
+              },
+              get dataKeys() {
+                return Object.keys(data).map((key) => ({
+                  key,
+                  name: data[key].name,
+                }));
+              },
+              get selectedSizes() {
+                return data[this.selected];
+              },
+              get result() {
+                return this.selectedSizes.sizes.find((i) => i.name.toLowerCase() === this.selectedSize);
+              },
+              init() {
+                this.$watch("selected", (value) =>
+                  this.$nextTick(() => {
+                    this.activeImg = this.images[0];
+                    this.selectedSize = this.selectedSizes.sizes[0].name.toLowerCase();
+                  })
+                );
+              },
+            };
+          }
+        </script>
+        <div class="row" x-data="setup">
           <!-- Start Image -->
           <div class="col-12 col-md-6 mb-5 mb-md-0">
-            <img
-              src="/images/c1/top sheet.jpg"
-              class="img-fluid product-thumbnail"
-            />
+            <div class="ratio ratio-4x3">
+              <img :src="activeImg" class="product-thumbnail border" />
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+              <template x-for="img in images" :key="img">
+                <img
+                  @click="activeImg = img"
+                  :src="img"
+                  class="border pe-pointer mx-2"
+                  :class="activeImg == img ? 'border-active' : ''"
+                  style="width: 8rem"
+                />
+              </template>
+            </div>
           </div>
           <!-- End Image -->
 
-          <!-- Lucas 2 -->
-          <script>
-            const data = {
-              fitted: {
-                name: "Wrinkle Top Sheet",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Queen",
-                    blend: "90/10 Cotton",
-                    specification: "96x110",
-                    price: "$396/dozen",
-                  },
-                  {
-                    id: 2,
-                    name: "King",
-                    blend: "90/10 Cotton",
-                    specification: "114x110",
-                    price: "$444/dozen",
-                  },
-                ],
-              },
-            };
-            function setup() {
-              return {
-                selected: "fitted",
-                selectedSize: "queen",
-                get dataKeys() {
-                  return Object.keys(data).map((key) => ({
-                    key,
-                    name: data[key].name,
-                  }));
-                },
-                get selectedSizes() {
-                  return data[this.selected];
-                },
-                get result() {
-                  return this.selectedSizes.sizes.find(
-                    (i) => i.name.toLowerCase() === this.selectedSize
-                  );
-                },
-                init() {
-                  this.$watch("selected", (value) =>
-                    this.$nextTick(() => {
-                      this.selectedSize =
-                        this.selectedSizes.sizes[0].name.toLowerCase();
-                    })
-                  );
-                },
-              };
-            }
-          </script>
-
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0"x-data="setup">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0">
             <h2 class="mb-4 section-title">Wrinkle Top Sheet</h2>
             <div class="mb-4">
               <!-- Lucas 4 Start -->
@@ -201,19 +219,11 @@
                 <div class="mb-4 d-flex">
                   <div class="d-inline-block">
                     <div class="fs-6">Blend</div>
-                    <button
-                      type="button"
-                      class="btn btn-primary btn-xs me-2"
-                      x-text="result.blend"
-                    ></button>
+                    <button type="button" class="btn btn-primary btn-xs me-2" x-text="result.blend"></button>
                   </div>
                   <div class="d-inline-block ms-4">
                     <div class="fs-6">Specification</div>
-                    <button
-                      type="button"
-                      class="btn btn-primary btn-xs me-2"
-                      x-text="result.specification"
-                    ></button>
+                    <button type="button" class="btn btn-primary btn-xs me-2" x-text="result.specification"></button>
                   </div>
                 </div>
                 <div class="my-5">
@@ -233,9 +243,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td rowspan="2" class="align-middle text-center">
-                      Wrinkle Top Sheet
-                    </td>
+                    <td rowspan="2" class="align-middle text-center">Wrinkle Top Sheet</td>
                     <td>Queen</td>
                     <td>90/10 Cotton</td>
                     <td>96x110</td>
@@ -262,9 +270,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">White color</li>
               <li class="list-group-item">90/10 Rich Cotton Blend</li>
-              <li class="list-group-item">
-                Sanforized for superior shrinkage control
-              </li>
+              <li class="list-group-item">Sanforized for superior shrinkage control</li>
               <li class="list-group-item">Wrinkle and pill resistance</li>
               <li class="list-group-item">Coloured thread on the bottom hem</li>
               <li class="list-group-item ps-5">-Double size —Yellow</li>
