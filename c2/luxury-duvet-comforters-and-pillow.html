@@ -64,10 +64,14 @@
                 <li><a class="dropdown-item" href="/c1.html">Sheets and Pillowcases</a></li>
                 <li><a class="dropdown-item" href="/c2.html">Duvet Comforters & Pillows</a></li>
                 <li><a class="dropdown-item" href="/c3.html">Mattress Pads & Pillow Protectors</a></li>
-                <li><a class="dropdown-item" href="/c4.html">Towels, Bath mat, Bath Robe & Slipper</a></li>
-                <li><a class="dropdown-item" href="/c5.html">Classic Pool Towel</a></li>
-                <li><a class="dropdown-item" href="/c6.html">Tablecloth</a></li>
-                <li><a class="dropdown-item" href="/c7.html">On Sale Products</a></li>
+                <li><a class="dropdown-item" href="/c4.html">Waterproof Protectors</a></li>
+                <li><a class="dropdown-item" href="/c5.html">Towels, Bath mat, Bath Robe & Slipper</a></li>
+                <li><a class="dropdown-item" href="/c6.html">Classic Pool Towel</a></li>
+                <li><a class="dropdown-item" href="/c7.html">Luxury Pool Towel</a></li>
+                <li><a class="dropdown-item" href="/c8.html">Slipper and Rope</a></li>
+                <li><a class="dropdown-item" href="/c9.html">Tablecloth</a></li>
+                <li><a class="dropdown-item" href="/c10.html">Custom Products</a></li>
+                <li><a class="dropdown-item" href="/c11.html">On Sale Products</a></li>
               </ul>
             </li>
             <li><a class="nav-link" href="/about.html">About us</a></li>
@@ -105,105 +109,124 @@
     <!-- Start Product Section -->
     <div class="product-section py-7">
       <div class="container">
-        <div class="row">
+        <!-- Lucas 2 -->
+        <script>
+          const data = {
+            fitted: {
+              name: "Duvet",
+              images: ["/img/c2/2/duvet/duvets.jpg", "/img/c2/2/duvet/duvets22.jpg"],
+              sizes: [
+                {
+                  id: 1,
+                  name: "Twin",
+                  blend: "46 oz fill",
+                  specification: "64x88",
+                  price: "$60/each",
+                },
+                {
+                  id: 2,
+                  name: "Double",
+                  blend: "57 oz fill",
+                  specification: "80x90",
+                  price: "$72/each",
+                },
+                {
+                  id: 3,
+                  name: "Queen",
+                  blend: "64 oz fill",
+                  specification: "90x90",
+                  price: "$79/each",
+                },
+                {
+                  id: 4,
+                  name: "Queen XL",
+                  blend: "70 oz fill",
+                  specification: "90x98",
+                  price: "$84/each",
+                },
+                {
+                  id: 5,
+                  name: "King",
+                  blend: "77 oz fill",
+                  specification: "108x90",
+                  price: "$90/each",
+                },
+                {
+                  id: 6,
+                  name: "King XL",
+                  blend: "82 oz fill",
+                  specification: "108x98",
+                  price: "$95/each",
+                },
+              ],
+            },
+            flat: {
+              name: "Pillow Firm",
+              images: ["/img/c2/2/pillow/pillow.jpg"],
+              sizes: [
+                {
+                  id: 3,
+                  name: "Queen",
+                  blend: "42 oz fill",
+                  specification: "20x30",
+                  price: "$22/each",
+                },
+              ],
+            },
+          };
+          function setup() {
+            return {
+              selected: "fitted",
+              selectedSize: "queen",
+              activeImg: "/img/c2/2/duvet/duvets.jpg",
+              get images() {
+                return data[this.selected].images;
+              },
+              get dataKeys() {
+                return Object.keys(data).map((key) => ({
+                  key,
+                  name: data[key].name,
+                }));
+              },
+              get selectedSizes() {
+                return data[this.selected];
+              },
+              get result() {
+                return this.selectedSizes.sizes.find((i) => i.name.toLowerCase() === this.selectedSize);
+              },
+              init() {
+                this.$watch("selected", (value) =>
+                  this.$nextTick(() => {
+                    this.selectedSize = this.selectedSizes.sizes[0].name.toLowerCase();
+                    this.activeImg = this.images[0];
+                  })
+                );
+              },
+            };
+          }
+        </script>
+        <div class="row" x-data="setup">
           <!-- Start Image -->
           <div class="col-12 col-md-6 mb-5 mb-md-0">
-            <img src="/images/c2/duvets22.jpg" class="img-fluid product-thumbnail" />
+            <div class="ratio ratio-4x3">
+              <img :src="activeImg" class="product-thumbnail border" />
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+              <template x-for="img in images" :key="img">
+                <img
+                  @click="activeImg = img"
+                  :src="img"
+                  class="border pe-pointer mx-2"
+                  :class="activeImg == img ? 'border-active' : ''"
+                  style="width: 8rem"
+                />
+              </template>
+            </div>
           </div>
           <!-- End Image -->
 
-          <!-- Lucas 2 -->
-          <script>
-            const data = {
-              fitted: {
-                name: "Duvet",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Twin",
-                    blend: "46 oz fill",
-                    specification: "64x88",
-                    price: "$60/each",
-                  },
-                  {
-                    id: 2,
-                    name: "Double",
-                    blend: "57 oz fill",
-                    specification: "80x90",
-                    price: "$72/each",
-                  },
-                  {
-                    id: 3,
-                    name: "Queen",
-                    blend: "64 oz fill",
-                    specification: "90x90",
-                    price: "$79/each",
-                  },
-                  {
-                    id: 4,
-                    name: "Queen XL",
-                    blend: "70 oz fill",
-                    specification: "90x98",
-                    price: "$84/each",
-                  },
-                  {
-                    id: 5,
-                    name: "King",
-                    blend: "77 oz fill",
-                    specification: "108x90",
-                    price: "$90/each",
-                  },
-                  {
-                    id: 6,
-                    name: "King XL",
-                    blend: "82 oz fill",
-                    specification: "108x98",
-                    price: "$95/each",
-                  },
-                ],
-              },
-              flat: {
-                name: "Pillow Firm",
-                sizes: [
-                  {
-                    id: 3,
-                    name: "Queen",
-                    blend: "42 oz fill",
-                    specification: "20x30",
-                    price: "$22/each",
-                  },
-                ],
-              },
-            };
-            function setup() {
-              return {
-                selected: "fitted",
-                selectedSize: "queen",
-                get dataKeys() {
-                  return Object.keys(data).map((key) => ({
-                    key,
-                    name: data[key].name,
-                  }));
-                },
-                get selectedSizes() {
-                  return data[this.selected];
-                },
-                get result() {
-                  return this.selectedSizes.sizes.find((i) => i.name.toLowerCase() === this.selectedSize);
-                },
-                init() {
-                  this.$watch("selected", (value) =>
-                    this.$nextTick(() => {
-                      this.selectedSize = this.selectedSizes.sizes[0].name.toLowerCase();
-                    })
-                  );
-                },
-              };
-            }
-          </script>
-
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0">
             <h2 class="mb-4 section-title">Luxury Duvet Comforters & Pillow</h2>
             <div class="mb-4">
               <!-- Lucas 4 Start -->
@@ -308,7 +331,7 @@
                 </tbody>
               </table>
             </div>
-            <p><a href="#" class="btn">Contact for big purchase</a></p>
+            <p><a href="/contact.html" class="btn">Contact Us</a></p>
           </div>
           <!-- End Description -->
         </div>

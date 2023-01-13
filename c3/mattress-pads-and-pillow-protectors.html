@@ -64,10 +64,14 @@
                 <li><a class="dropdown-item" href="/c1.html">Sheets and Pillowcases</a></li>
                 <li><a class="dropdown-item" href="/c2.html">Duvet Comforters & Pillows</a></li>
                 <li><a class="dropdown-item" href="/c3.html">Mattress Pads & Pillow Protectors</a></li>
-                <li><a class="dropdown-item" href="/c4.html">Towels, Bath mat, Bath Robe & Slipper</a></li>
-                <li><a class="dropdown-item" href="/c5.html">Classic Pool Towel</a></li>
-                <li><a class="dropdown-item" href="/c6.html">Tablecloth</a></li>
-                <li><a class="dropdown-item" href="/c7.html">On Sale Products</a></li>
+                <li><a class="dropdown-item" href="/c4.html">Waterproof Protectors</a></li>
+                <li><a class="dropdown-item" href="/c5.html">Towels, Bath mat, Bath Robe & Slipper</a></li>
+                <li><a class="dropdown-item" href="/c6.html">Classic Pool Towel</a></li>
+                <li><a class="dropdown-item" href="/c7.html">Luxury Pool Towel</a></li>
+                <li><a class="dropdown-item" href="/c8.html">Slipper and Rope</a></li>
+                <li><a class="dropdown-item" href="/c9.html">Tablecloth</a></li>
+                <li><a class="dropdown-item" href="/c10.html">Custom Products</a></li>
+                <li><a class="dropdown-item" href="/c11.html">On Sale Products</a></li>
               </ul>
             </li>
             <li><a class="nav-link" href="/about.html">About us</a></li>
@@ -106,86 +110,105 @@
     <!-- Start Product Section -->
     <div class="product-section py-7">
       <div class="container">
-        <div class="row">
+        <!-- Lucas 2 -->
+        <script>
+          const data = {
+            mattress: {
+              name: "Mattress Pad",
+              images: ["/img/c3/1/mattress/mattress pad1.jpg", "/img/c3/1/mattress/mattress pad2.jpg"],
+              sizes: [
+                {
+                  id: 1,
+                  name: "	Twin",
+                  specification: "39x78",
+                  price: "$20/each",
+                },
+                {
+                  id: 2,
+                  name: "Double",
+                  specification: "54x80",
+                  price: "$24/each",
+                },
+                {
+                  id: 3,
+                  name: "Queen",
+                  specification: "60x80",
+                  price: "$27/each",
+                },
+                {
+                  id: 4,
+                  name: "King",
+                  specification: "78x80",
+                  price: "$32/each",
+                },
+              ],
+            },
+            pillow: {
+              name: "Flap Pillow Protector",
+              images: ["/img/c3/1/pillow/pillowprotector.jpg"],
+              sizes: [
+                {
+                  id: 1,
+                  name: "Queen",
+                  specification: "20x30",
+                  price: "$300/100 Pieces",
+                },
+              ],
+            },
+          };
+          function setup() {
+            return {
+              selected: "mattress",
+              selectedSize: "queen",
+              activeImg: "/img/c3/1/mattress/mattress pad1.jpg",
+              get images() {
+                return data[this.selected].images;
+              },
+              get dataKeys() {
+                return Object.keys(data).map((key) => ({
+                  key,
+                  name: data[key].name,
+                }));
+              },
+              get selectedSizes() {
+                return data[this.selected];
+              },
+              get result() {
+                return this.selectedSizes.sizes.find((i) => i.name.toLowerCase() === this.selectedSize);
+              },
+              init() {
+                this.$watch("selected", (value) =>
+                  this.$nextTick(() => {
+                    this.selectedSize = this.selectedSizes.sizes[0].name.toLowerCase();
+                    this.activeImg = this.images[0];
+                  })
+                );
+              },
+            };
+          }
+        </script>
+        <div class="row" x-data="setup">
           <!-- Start Image -->
           <div class="col-12 col-md-6 mb-5 mb-md-0">
-            <img src="/images/c3/mattress pad 2.jpg" class="img-fluid product-thumbnail" />
+            <div class="ratio ratio-4x3">
+              <img :src="activeImg" class="product-thumbnail border" />
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+              <template x-for="img in images" :key="img">
+                <img
+                  @click="activeImg = img"
+                  :src="img"
+                  class="border pe-pointer mx-2"
+                  :class="activeImg == img ? 'border-active' : ''"
+                  style="width: 8rem"
+                />
+              </template>
+            </div>
           </div>
           <!-- End Image -->
 
-          <!-- Lucas 2 -->
-          <script>
-            const data = {
-              fitted: {
-                name: "Mattress Pad",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "	Twin",
-                    specification: "39x78",
-                    price: "$20/each",
-                  },
-                  {
-                    id: 2,
-                    name: "Double",
-                    specification: "54x80",
-                    price: "$24/each",
-                  },
-                  {
-                    id: 3,
-                    name: "Queen",
-                    specification: "60x80",
-                    price: "$27/each",
-                  },
-                  {
-                    id: 4,
-                    name: "King",
-                    specification: "78x80",
-                    price: "$32/each",
-                  },
-                ],
-              },
-              flat: {
-                name: "Flap Pillow Protector",
-                sizes: [
-                  {
-                    id: 1,
-                    name: "Queen",
-                    specification: "20x30",
-                    price: "$300/100 Pieces",
-                  },
-                ],
-              },
-            };
-            function setup() {
-              return {
-                selected: "fitted",
-                selectedSize: "queen",
-                get dataKeys() {
-                  return Object.keys(data).map((key) => ({
-                    key,
-                    name: data[key].name,
-                  }));
-                },
-                get selectedSizes() {
-                  return data[this.selected];
-                },
-                get result() {
-                  return this.selectedSizes.sizes.find((i) => i.name.toLowerCase() === this.selectedSize);
-                },
-                init() {
-                  this.$watch("selected", (value) =>
-                    this.$nextTick(() => {
-                      this.selectedSize = this.selectedSizes.sizes[0].name.toLowerCase();
-                    })
-                  );
-                },
-              };
-            }
-          </script>
-
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0">
             <h2 class="mb-4 section-title">Mattress Pads & Pillow Protectors</h2>
             <div class="mb-4">
               <!-- Lucas 4 Start -->
@@ -268,7 +291,7 @@
                 </tbody>
               </table>
             </div>
-            <p><a href="#" class="btn">Contact for big purchase</a></p>
+            <p><a href="/contact.html" class="btn">Contact Us</a></p>
           </div>
           <!-- End Description -->
         </div>

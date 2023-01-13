@@ -64,10 +64,14 @@
                 <li><a class="dropdown-item" href="/c1.html">Sheets and Pillowcases</a></li>
                 <li><a class="dropdown-item" href="/c2.html">Duvet Comforters & Pillows</a></li>
                 <li><a class="dropdown-item" href="/c3.html">Mattress Pads & Pillow Protectors</a></li>
-                <li><a class="dropdown-item" href="/c4.html">Towels, Bath mat, Bath Robe & Slipper</a></li>
-                <li><a class="dropdown-item" href="/c5.html">Classic Pool Towel</a></li>
-                <li><a class="dropdown-item" href="/c6.html">Tablecloth</a></li>
-                <li><a class="dropdown-item" href="/c7.html">On Sale Products</a></li>
+                <li><a class="dropdown-item" href="/c4.html">Waterproof Protectors</a></li>
+                <li><a class="dropdown-item" href="/c5.html">Towels, Bath mat, Bath Robe & Slipper</a></li>
+                <li><a class="dropdown-item" href="/c6.html">Classic Pool Towel</a></li>
+                <li><a class="dropdown-item" href="/c7.html">Luxury Pool Towel</a></li>
+                <li><a class="dropdown-item" href="/c8.html">Slipper and Rope</a></li>
+                <li><a class="dropdown-item" href="/c9.html">Tablecloth</a></li>
+                <li><a class="dropdown-item" href="/c10.html">Custom Products</a></li>
+                <li><a class="dropdown-item" href="/c11.html">On Sale Products</a></li>
               </ul>
             </li>
             <li><a class="nav-link" href="/about.html">About us</a></li>
@@ -113,6 +117,7 @@
           const data = {
             fitted: {
               name: "Duvet Blanket",
+              images: ["/img/c2/1/duvet/duvets.jpg", "/img/c2/1/duvet/duvets22.jpg"],
               sizes: [
                 {
                   id: 1,
@@ -132,6 +137,7 @@
             },
             pillow: {
               name: "Pillow Firm",
+              images: ["/img/c2/1/pillow/pillow.jpg"],
               sizes: [
                 {
                   id: 1,
@@ -147,7 +153,7 @@
             return {
               selected: "fitted",
               selectedSize: "queen",
-              activeImg: "/img/c1/1/fitted/FITTED SHEET.jpg",
+              activeImg: "/img/c2/1/duvet/duvets.jpg",
               get images() {
                 return data[this.selected].images;
               },
@@ -242,7 +248,7 @@
                 </div>
               </div>
             </div>
-            <p><a href="#" class="btn">Contact for big purchase</a></p>
+            <p><a href="/contact.html" class="btn">Contact Us</a></p>
           </div>
           <!-- End Description -->
         </div>

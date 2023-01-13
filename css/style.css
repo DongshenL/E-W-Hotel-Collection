@@ -912,10 +912,6 @@ textarea {
   border-radius: 0.1rem;
 }
 
-.tw-justify-between {
-  justify-content: space-between;
-}
-
 .pe-pointer {
   cursor: pointer;
 }

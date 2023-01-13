@@ -1,0 +1,1 @@
+<?php header("Location: /c11.html"); ?>
