@@ -68,7 +68,7 @@
 })();
 
 window.addEventListener("DOMContentLoaded", function () {
-  var galley = document.querySelector(".product-thumbnail");
+  var galley = document.querySelector("body.single-product .product-thumbnail");
   var viewer = new Viewer(galley, {
     toolbar: false,
     navbar: false,
