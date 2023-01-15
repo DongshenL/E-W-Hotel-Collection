@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="author" content="e-w hotel collection" />
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
 
     <meta name="description" content="" />
     <meta name="keywords" content="E-W Hotel Collection" />
@@ -92,7 +92,7 @@
           <div class="col-lg-8">
             <div class="intro-excerpt">
               <h1>Custom-Made Products</h1>
-              <p class="mb-4"></p>
+              <p class="mb-4">.</p>
               <p>
                 <a href="/c10.html" class="btn btn-secondary me-2">Back to Custom-Made Products</a>
               </p>
@@ -111,163 +111,114 @@
     <!-- Start Product Section -->
     <div class="product-section py-7">
       <div class="container">
-        <div class="row">
-          <!-- Start Image -->
-          <div class="col-12 col-md-6 mb-5 mb-md-0">
-            <img src="/images/placeholder-image.webp" class="img-fluid product-thumbnail" />
-          </div>
-          <!-- End Image -->
-          <!-- Lucas 2 -->
-          <script>
-            const data = {
-              tablecloth: {
-                name: "Tablecloth (White)",
-                children: [
-                  {
-                    id: 1,
-                    specification: "54x54",
-                    price: "$13.50/each",
-                  },
-                  {
-                    id: 2,
-                    specification: "54x120",
-                    price: "$24.50/each",
-                  },
-                  {
-                    id: 3,
-                    specification: "72x72",
-                    price: "$26.50/each",
-                  },
-                  {
-                    id: 4,
-                    specification: "90x90",
-                    price: "$36.50/each",
-                  },
-                ],
-                name: "Tablecloth (Black)",
-                children: [
-                  {
-                    id: 1,
-                    specification: "54x54",
-                    price: "$16.00/each",
-                  },
-                  {
-                    id: 2,
-                    specification: "54x120",
-                    price: "$33.00/each",
-                  },
-                  {
-                    id: 3,
-                    specification: "72x72",
-                    price: "$28.00/each",
-                  },
-                  {
-                    id: 4,
-                    specification: "90x90",
-                    price: "$38.00/each",
-                  },
-                ],
+        <script>
+          const data = {
+            face: {
+              name: "Face Towel",
+              price: "Upon Request",
+              image: "/img/c10/towels/face.jpg",
+            },
+            hand: {
+              name: "Hand Towel",
+              price: "Upon Request",
+              image: "/img/c10/towels/hand.jpg",
+            },
+            bath: {
+              name: "Bath Towel",
+              price: "Upon Request",
+              image: "/img/c10/towels/bath.jpg",
+            },
+            slipper: {
+              name: "Slipper",
+              price: "Upon Request",
+              image: "/img/c10/slippers.webp",
+            },
+            tablecloth: {
+              name: "Tablecloth",
+              price: "Upon Request",
+              image: "/img/c10/slippers.webp",
+            },
+            robe: {
+              name: "Robe",
+              price: "Upon Request",
+              image: "/img/c10/robes/1.jpg",
+              other: "5 Colors Available"
+            },
+          };
+          function setup() {
+            return {
+              selected: "face",
+              get dataKeys() {
+                return Object.keys(data).map((key) => ({
+                  key,
+                  name: data[key].name,
+                }));
               },
-              Napkin: {
-                name: "Napkin",
-                colors: [
-                  {
-                    id: 1,
-                    specification: "22x22",
-                    price: "$1.90/each",
-                  },
-                  {
-                    id: 2,
-                    name: "Black",
-                    specification: "22x22",
-                    price: "$2.10/each",
-                  },
-                ],
+              get result() {
+                return data[this.selected];
               },
             };
-            function setup() {
-              return {
-                selected: "tablecloth",
-                selectedColor: "white",
-                get dataKeys() {
-                  return Object.keys(data).map((key) => ({
-                    key,
-                    name: data[key].name,
-                  }));
-                },
-                get selectedColors() {
-                  return data[this.selected];
-                },
-                get result() {
-                  return this.selectedColors.colors.find((i) => i.name.toLowerCase() === this.selectedColor);
-                },
-                init() {
-                  this.$watch("selected", (value) =>
-                    this.$nextTick(() => {
-                      this.selectedColor = this.selectedColors.colors[0].name.toLowerCase();
-                    })
-                  );
-                },
-              };
-            }
-          </script>
-          <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
-            <h2 class="mb-4 section-title">Custom-Made Products</h2>
-
-            <!-- Lucas 4 End -->
-            <table class="table table-bordered border border-dark">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>color</th>
-                  <th>Specification</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Luxury Custom-Made Face Towel</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>Upon Request</td>
-                </tr>
-                <tr>
-                  <td>Luxury Custom-Made Hand Towel</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>Upon Request</td>
-                </tr>
-                <tr>
-                  <td>Luxury Custom-Made Bath Towel</td>
-                  <td>-</td>
-                  <td>Hotel logo available</td>
-                  <td>Upon Request</td>
-                </tr>
-                <tr>
-                  <td>Slipper</td>
-                  <td>-</td>
-                  <td>Hotel logo available</td>
-                  <td>Upon Request</td>
-                </tr>
-                <tr>
-                  <td>Tabelcloth</td>
-                  <td>-</td>
-                  <td>Hotel logo available</td>
-                  <td>Upon Request</td>
-                </tr>
-                <tr>
-                  <td>Bathrobe</td>
-                  <td>5 colors available</td>
-                  <td>Hotel logo available</td>
-                  <td>Upon Request</td>
-                </tr>
-              </tbody>
-            </table>
+          }
+        </script>
+        <div class="row" x-data="setup">
+          <!-- Start Image -->
+          <div class="col-12 col-md-6 mb-5 mb-md-0">
+            <div class="ratio ratio-4x3">
+              <img :src="result.image" class="product-thumbnail border" />
+            </div>
           </div>
-          <p><a href="/contact.html" class="btn">Contact Us</a></p>
+          <!-- End Image -->
+
+          <!-- Lucas 2 -->
+
+          <!-- Start Description -->
+          <div class="col-12 col-md-6 mb-5 mb-lg-0">
+            <h2 class="mb-4 section-title">Custom-Made Products (with your Hotel logo)</h2>
+            <div class="mb-4">
+              <!-- Lucas 4 Start -->
+              <div>
+                <div class="mb-4">
+                  <div class="fs-6">Name</div>
+                  <template x-for="item in dataKeys" :key="item.key">
+                    <button
+                      type="button"
+                      class="btn btn-xs me-2 mb-2"
+                      :class="selected == item.key ? 'btn-primary' : 'btn-gray'"
+                      @click="selected = item.key"
+                      x-html="item.name"
+                    ></button>
+                  </template>
+                </div>
+
+                <div class="mb-4 d-flex">
+                  <div class="d-inline-block">
+                    <button type="button" class="btn btn-primary btn-xs me-2">Hotel logo available</button>
+                  </div>
+                  <template x-if="result.other">
+                    <div class="d-inline-block">
+                      <button type="button" class="btn btn-primary btn-xs me-2" x-text="result.other"></button>
+                    </div>
+                  </template>
+                </div>
+                <div class="my-5">
+                  <div x-text="result.price" class="display-6"></div>
+                </div>
+              </div>
+            </div>
+            <p><a href="/contact.html" class="btn">Contact Us</a></p>
+          </div>
+          <!-- End Description -->
         </div>
-        <!-- End Description -->
+        <div class="row mt-5 d-none">
+          <div class="col-12">
+            <h5 class="text-black">Highlights</h5>
+          </div>
+          <div class="col-12">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">High quality</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <!-- End Product Section -->

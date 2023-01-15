@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="author" content="e-w hotel collection" />
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
 
     <meta name="description" content="" />
     <meta name="keywords" content="E-W Hotel Collection" />
@@ -111,46 +111,60 @@
     <!-- Start Product Section -->
     <div class="product-section py-7">
       <div class="container">
-        <div class="row">
+        <!-- Lucas 2 -->
+        <script>
+          const data = {
+            pool600: {
+              name: "Pool Towel (600g)",
+              specification: "27x54",
+              price: "$14.00/each",
+              images: [
+                  "/img/c7/1/white-luxury-pool-towel/1.jpg",
+                  "/img/c7/1/white-luxury-pool-towel/2.jpg"
+              ]
+            },
+          };
+          function setup() {
+            return {
+              selected: "pool600",
+              activeImg: "/img/c7/1/white-luxury-pool-towel/1.jpg",
+              get images() {
+                return data[this.selected].images;
+              },
+              get dataKeys() {
+                return Object.keys(data).map((key) => ({
+                  key,
+                  name: data[key].name,
+                }));
+              },
+              get result() {
+                return data[this.selected];
+              },
+            };
+          }
+        </script>
+        <div class="row" x-data="setup">
           <!-- Start Image -->
           <div class="col-12 col-md-6 mb-5 mb-md-0">
             <div class="ratio ratio-4x3">
-              <img src="/img/c7/1/white-luxury-pool-towel/1.jpg" class="img-fluid product-thumbnail" />
+              <img :src="activeImg" class="product-thumbnail border" />
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+              <template x-for="img in images" :key="img">
+                <img
+                  @click="activeImg = img"
+                  :src="img"
+                  class="border pe-pointer mx-2"
+                  :class="activeImg == img ? 'border-active' : ''"
+                  style="width: 6rem"
+                />
+              </template>
             </div>
           </div>
           <!-- End Image -->
 
-          <!-- Lucas 2 -->
-          <script>
-            const data = {
-              pool600: {
-                name: "Pool Towel (600g)",
-                specification: "27x54",
-                price: "$14.00/each",
-                images: [
-                    "/img/c7/1/"
-                ]
-              },
-            };
-            function setup() {
-              return {
-                selected: "pool600",
-                selectedImage: "/img/c7/1/blue & white strip luxury pool towel/Blue & white strip pool towel.jpg",
-                get dataKeys() {
-                  return Object.keys(data).map((key) => ({
-                    key,
-                    name: data[key].name,
-                  }));
-                },
-                get result() {
-                  return data[this.selected];
-                },
-              };
-            }
-          </script>
-
           <!-- Start Description -->
-          <div class="col-12 col-md-6 mb-5 mb-lg-0" x-data="setup">
+          <div class="col-12 col-md-6 mb-5 mb-lg-0">
             <h2 class="mb-4 section-title">Luxury Pool Towels</h2>
             <div class="mb-4">
               <!-- Lucas 4 Start -->
