@@ -94,7 +94,9 @@
               <h1>Waterproof Mattress Protectors and Pillow Protector</h1>
               <p class="mb-4"></p>
               <p>
-                <a href="/c4.html" class="btn btn-secondary me-2">Back to Waterproof Mattress Protectors and Pillow Protector</a>
+                <a href="/c4.html" class="btn btn-secondary me-2"
+                  >Back to Waterproof Mattress Protectors and Pillow Protector</a
+                >
               </p>
             </div>
           </div>
@@ -194,7 +196,7 @@
             <div class="ratio ratio-4x3">
               <img :src="activeImg" class="product-thumbnail border" />
             </div>
-            <div class="d-flex justify-content-center mt-1">
+            <div class="d-flex justify-content-center mt-1" style="flex-wrap: wrap">
               <template x-for="img in images" :key="img">
                 <img
                   @click="activeImg = img"
@@ -253,9 +255,8 @@
                 </div>
               </div>
             </div>
-            <p class="mt-5">
-              <a href="/contact.html" class="btn">Contact Us</a>
-            </p>
+            <p class="request-quote">Request a free quote?</p>
+            <p><a href="/contact.html" class="btn">Contact Us</a></p>
           </div>
           <!-- End Description -->
         </div>
@@ -267,7 +268,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">White color</li>
               <li class="list-group-item">Top 60/40 Rich Cotton Blend</li>
-              <li class="list-group-item">4 oz filings </li>
+              <li class="list-group-item">4 oz filings</li>
               <li class="list-group-item">100% waterproof - PU (Material)</li>
               <li class="list-group-item">Sanforized for superior shrinkage control</li>
               <li class="list-group-item">Wrinkle and pill resistance</li>
