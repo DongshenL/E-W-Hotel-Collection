@@ -272,6 +272,7 @@ a.more {
   cursor: pointer;
 }
 .product-section .product-item .product-thumbnail {
+  max-height: 210px;
   margin-bottom: 30px;
   position: relative;
   top: 0;
